@@ -3,7 +3,7 @@ import createTable from "data-table";
 import c3 from "c3";
 import $ from "jquery";
 
-String.prototype.replaceAll = function(search, replacement) {
+String.prototype.replaceAll = function (search, replacement) {
     var target = this;
     return target.replace(new RegExp(search, 'g'), replacement);
 };
@@ -72,11 +72,11 @@ const createCharts = () => {
 
 const updateUI = () => {
     $("#motor-state").text(JSON.stringify(robot.motor).replaceAll(`"`, '').replaceAll(":", ": ").replaceAll(",", ", "));
-    $("#control-state").text(JSON.stringify(robot.control).replaceAll(`"`, '').replaceAll(":", ": ").replaceAll(",", ", "));
-    $("#control-system-selector").change(() => {
-        console($(this).text())
+    $("#control-system-selector").change(function () {
+        $("#control-state").text(`{${$(this).val()}: ` + JSON.stringify(robot.control[$(this).val()]).replaceAll(`"`, '')
+            .replaceAll(":", ": ").replaceAll(",", ", ") + "}");
     })
-
+    $("#control-system-selector").change();
 }
 
 
