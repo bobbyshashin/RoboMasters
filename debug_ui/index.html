@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>HKUST Robomasters :: Debug UI - Kenta Iwasaki</title>
     <link rel="stylesheet" type="text/css" href="node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/c3/c3.min.css">
 </head>
 
 <body>
@@ -35,12 +36,15 @@
     <div id="ports"></div>
     <br/>
 
+    <div id="motorPowerChart"></div>
+
 </section>
 </body>
 
 <script>
     // You can also require other files to run in this process
     require('babel-register');
-    require('./renderer.js')
+    require('d3');
+    require('./renderer.js');
 </script>
 </html>

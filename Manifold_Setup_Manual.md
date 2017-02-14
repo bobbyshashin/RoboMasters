@@ -4,7 +4,7 @@
 
 - First follow the instructions [here](http://wiki.ros.org/indigo/Installation/UbuntuARM)
 
-- Then install several 3rd-party ROS Packages:
+- Then install several 3rd-party ROS Pack??????????/ages:
 ```
 sudo apt-get install ros-indigo-cv-bridge
 sudo apt-get install ros-indigo-aruco
