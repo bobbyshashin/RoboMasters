@@ -1,0 +1,22 @@
+{
+  "name": "robomasters",
+  "version": "0.0.0",
+  "description": "Robomasters HKUST",
+  "main": "./dist/main.js",
+  "dependencies": {
+    "bulma": "^0.3.1",
+    "c3": "^0.4.11",
+    "d3": "^4.5.0",
+    "data-table": "^2.0.0",
+    "lodash": "^4.17.4",
+    "serialport": "^4.0.7",
+    "vue": "^2.1.10",
+    "vue-electron": "^1.0.6",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.1.2"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.5.7"
+  },
+  "author": "Kenta Iwasaki <dranithix@gmail.com>"
+}
