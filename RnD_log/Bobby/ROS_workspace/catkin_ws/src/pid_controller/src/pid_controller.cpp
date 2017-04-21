@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    pid_controller.cpp
   * @author  Bobby SHEN 
-  * @version V1.2.0
-  * @date    06-September-2016
+  * @version V1.3.1
+  * @date    21-April-2017
   * @brief   This is a PID controller node based on ROS, modified from gaowenliang's code
   *           
   ******************************************************************************  
