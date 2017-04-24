@@ -19,8 +19,9 @@
 #include "1.8 TFT_display.h"
 #include "encoder.h"
 #include "data_monitor.h"
-
+#include "BilateralCommunication.h"
 #include "adc.h"
+
 
 #include "stm32f4xx_crc.h"
 #include "core_cm4.h"

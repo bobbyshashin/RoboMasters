@@ -1,4 +1,4 @@
- #include "can_motor.h"
+#include "can_motor.h"
 
 #define get_can_motor_id(motor_id)	(CAN_MOTOR_BASE + (u8)motor_id)
 static s32 can_motor_encoder_value[CAN_MOTOR_COUNT] = {0};

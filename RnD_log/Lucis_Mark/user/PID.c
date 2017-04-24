@@ -1,35 +1,33 @@
 #include "PID.h"
 int16_t pid_process( struct pid_control_states* states, int32_t* setpoint, int32_t* feedback, int32_t kp, int32_t ki, int32_t kd){
 
-	//first update current state 
+		//first update current state
+	int32_t ceLimit = 200000;
 	states->last_error	= states->current_error;
 	states->current_error = *setpoint - *feedback;
 	states->cummulated_error += states->current_error;
+	if (states->cummulated_error>ceLimit) states->cummulated_error =ceLimit;
+	else if(states->cummulated_error<-ceLimit) states->cummulated_error=-ceLimit;
 	
-	//then return the output value
-	int32_t output = kp *  states->current_error +
-					 ki *  states->cummulated_error +
-					 kd * (states->current_error - states->last_error);
+		//then return the output value
+	int32_t output = kp* 	states->current_error 
+									+ki* states->cummulated_error 
+									+kd* (states->current_error-states->last_error);
 		
 	return output;
 	
 }	
-void pidLimitI (struct pid_control_states* states, int limit) {
-	if (states->cummulated_error > limit) states->cummulated_error = limit;
-	if (states->cummulated_error < -limit) states->cummulated_error = -limit;
-}
 
-void fpidLimitI (struct fpid_control_states* states, float limit ) {
-	if (states->cummulated_error > limit) states->cummulated_error = limit;
-	if (states->cummulated_error < -limit) states->cummulated_error = -limit;
-}
-
-float fpid_process( struct fpid_control_states* states, float* setpoint, float* feedback, float kp, float ki, float kd){
+float fpid_process( struct fpid_control_states* states, int32_t* setpoint, float* feedback, float kp, float ki, float kd){
 
 		//first update current state 
 	states->last_error	= states->current_error;
 	states->current_error = *setpoint - *feedback;
 	states->cummulated_error += states->current_error;
+	
+	int32_t ceLimit = 2000;
+	if (states->cummulated_error>ceLimit) states->cummulated_error =ceLimit;
+	else if(states->cummulated_error<-ceLimit) states->cummulated_error=-ceLimit;
 	
 	
 		//then return the output value
@@ -78,8 +76,6 @@ void incPIDset(struct inc_pid_states * states_ptr, float kp, float ki, float kd)
 float incPIDcalc (struct inc_pid_states * state_ptr, signed int nextpoint) {
 	int iError;
 	float iincpid;
-	//state_ptr->sum_error*=0.9;
-	state_ptr->sum_error+=iError;
 	iError = state_ptr->setpoint - nextpoint;
 	//calculate the result 
 	iincpid = 
@@ -95,6 +91,7 @@ float incPIDcalc (struct inc_pid_states * state_ptr, signed int nextpoint) {
 void incPIDsetpoint (struct inc_pid_states * state_ptr, signed int setvalue) {
 		state_ptr->setpoint = setvalue;
 }
+
 
 void incPIDClearError(struct inc_pid_states * state_ptr) {
 	state_ptr->sum_error = 0;
