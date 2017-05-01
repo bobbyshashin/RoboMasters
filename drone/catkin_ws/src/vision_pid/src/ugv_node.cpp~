@@ -1,0 +1,97 @@
+#include <ros/ros.h>
+
+#include <iostream>
+#include <stdio.h>
+#include <stdint.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <pthread.h>
+#include <math.h>
+
+
+#include <ctime>
+#include <cstdlib>
+#include "unistd.h"
+#include "pid.h"
+#include <std_msgs/String.h>
+#include <std_msgs/Float32.h>
+#include <geometry_msgs/Vector3.h>
+#include <geometry_msgs/Quaternion.h>
+#include <geometry_msgs/Twist.h>
+
+using namespace std;
+using namespace ros;
+
+
+/* PID Parameter Tuning */
+Subscriber pid_parameter_sub;       // For tuning PID parameters (Kp, Ki and Kd)
+
+/* Get User Input Speed */
+Subscriber target_speed_sub;
+
+PID *pid_x;
+PID *pid_y;
+
+
+float Kp = 0.6;
+float Ki = 0.15;
+float Kd = 0.1;
+
+int16_t targetSpeed[4] = {2000, 2000, 2000, 2000};
+int16_t currentSpeed[4] = {0,0,0,0}; 
+
+float ctrl[4] = {0,0,0,0}; // data sent to CAN
+int threshold = 10;
+
+float dt = 0.1;
+
+float pid_ctrl_limit = 4000;
+float integralLimit = 40000;
+
+
+
+
+void pid_parameter_tuning_callback(const geometry_msgs::Vector3& msg) {
+
+   
+    pid_x -> set_param(msg.x, msg.y, msg.z); //Set Kp, Ki & Kd
+    pid_y -> set_param(msg.x, msg.y, msg.z); //Set Kp, Ki & Kd
+
+    cout << "PID parameters for horizontal position control have been updated!" << endl;
+    cout << "Kp: " << msg.x << endl;
+    cout << "Ki: " << msg.y << endl;
+    cout << "Kd: " << msg.z << endl;
+
+}
+
+
+
+int main(int argc, char *argv[]) {
+
+
+   
+    ros::init(argc, argv, "ugv_node");
+    ros::NodeHandle nh;
+
+
+    //ros::Subscriber orientation_sub = n.subscribe("/dji_sdk/odometry/pose/pose/orientation", 1000, chatterCallback);
+    pid_parameter_sub    = nh.subscribe("/ugv_pid_parameter",    1, pid_parameter_tuning_callback);
+
+
+    pid_x = new PID( Kp1, Ki1, Kd1, -integralLimit, integralLimit, -pid_ctrl_limit, pid_ctrl_limit, false);
+    pid_y = new PID( Kp1, Ki1, Kd1, -integralLimit, integralLimit, -pid_ctrl_limit, pid_ctrl_limit, false);
+    
+    ros::Rate loop_rate(100);					
+
+    /* Major loop */
+    while (ros::ok()) {
+
+
+		
+    ros::spinOnce();
+    loop_rate.sleep();
+
+    } // End of while loop
+
+}
