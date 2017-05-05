@@ -1,6 +1,6 @@
-#DJI Manifold Setup Manual 
+# DJI Manifold Setup Manual 
 
-###1. Install ROS Indigo (Ubuntu armhf)
+### 1. Install ROS Indigo (Ubuntu armhf)
 
 - First follow the instructions [here](http://wiki.ros.org/indigo/Installation/UbuntuARM)
 
@@ -12,7 +12,7 @@ sudo apt-get install ros-indigo-camera-info-manager
 sudo apt-get install ros-indigo-v4l-utils
 ```
 
-###2. Install CUDA 6.5: 
+### 2. Install CUDA 6.5: 
 
 - Download the source file from [here](http://developer.download.nvidia.com/embedded/L4T/r21_Release_v3.0/cuda-repo-l4t-r21.3-6-5-prod_6.5-42_armhf.deb)
 
@@ -50,7 +50,7 @@ export LD_LIBRARY_PATH=/usr/local/cuda-6.5/lib:$LD_LIBRARY_PATH
 source ~/.bashrc
 ```
 
-###3. Install OpenCV4Tegra:
+### 3. Install OpenCV4Tegra:
 
 - Download the source file from [here](http://developer.download.nvidia.com/embedded/OpenCV/L4T_21.2/libopencv4tegra-repo_l4t-r21_2.4.10.1_armhf.deb)
 
@@ -62,7 +62,7 @@ sudo apt-get install libopencv4tegra libopencv4tegra-dev libopencv4tegra-python
 sudo apt-get install libgtk2.0-dev pkg-config
 ```
 
-###4. Install OpenCV 2.4.10
+### 4. Install OpenCV 2.4.10
 
 - Download the source file from [here](https://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.10/opencv-2.4.10.zip/download)
 
