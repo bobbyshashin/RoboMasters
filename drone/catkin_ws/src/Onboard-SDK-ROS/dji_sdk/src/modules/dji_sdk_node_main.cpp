@@ -143,7 +143,7 @@ void DJISDKNode::broadcast_callback()
         odometry.twist.twist.linear.y = velocity.vy;
         odometry.twist.twist.linear.z = velocity.vz;
         odometry_publisher.publish(odometry);
-
+	/*
         Quaterniond ori(attitude_quaternion.q0,attitude_quaternion.q1,attitude_quaternion.q2,attitude_quaternion.q3);
  		Eigen::Matrix3d R;
  		R = ori.toRotationMatrix();
@@ -157,6 +157,7 @@ void DJISDKNode::broadcast_callback()
          orientation.z = theta;
 
          orientation_publisher.publish(orientation);
+	 */
 
 
 
@@ -184,17 +185,17 @@ void DJISDKNode::broadcast_callback()
         	rc_channels.gear = bc_data.rc.gear;
   
 		/**************Gear Action***************/
+		//topic: /gear
+		//msg type: UInt8
 		std_msgs::UInt8 msg;
-		if(rc_channels.gear == -10000) {
+
+		if(rc_channels.gear == -10000) { //Gear Up
 		
-			//TODO
 			msg.data = 1;
 			gear_info_publisher.publish(msg);
-
 		}
 		
-		else {
-
+		else { // Gear Down
 			msg.data = 0;
 			gear_info_publisher.publish(msg);
 		}

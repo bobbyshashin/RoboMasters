@@ -14,21 +14,43 @@ using namespace std;
 MISSION_STATUS mission_status = INIT;
    
 unsigned char ctrl_flag;
-ros::Publisher guidance_bias_correction_pub;
+
 ros::Subscriber api_ctrl_sub;
 ros::Subscriber api_cmd_sub;
+ros::Subscriber gear_sub;
+
+bool gearActivated = false;
+
 DJIDrone* drone;
 
 void ctrl_vel_callback(const geometry_msgs::Vector3& ctrl_velocity) {
 
-    if(mission_status == STAND_BY){
-
-        drone->attitude_control(0x5b, ctrl_velocity.x, ctrl_velocity.y, 0.8, 0); //Notice here! Third one should be the height in this mode!!!
-        cout << "Velocity_x, Velocity_y, Velocity_z" << endl << (double)ctrl_velocity.x << " " << (double)ctrl_velocity.y << " " << (double)ctrl_velocity.z << endl;
+    if(gearActivated){
+        //Notice here! Third one should be the height in this mode!!!
+        drone->attitude_control(0x5b, ctrl_velocity.x, ctrl_velocity.y, 1.5, 0);
+        //cout << "Velocity_x, Velocity_y, Velocity_z" << endl << (double)ctrl_velocity.x << " " << (double)ctrl_velocity.y << " " << (double)ctrl_velocity.z << endl;
     }
 
-    //else
-    //    cout << "Drone is not in the STAND_BY mode" << endl; 
+}
+
+void gearCallback(const std_msgs::UInt8& msg) {
+
+    if(msg.data == 1) {
+
+	if(drone->request_sdk_permission_control())
+            cout << "Command sent: Obtain control" << endl;
+            
+	gearActivated = true;
+    }
+
+
+
+
+
+
+
+
+
 }
 
 void sdk_cmd_callback(const std_msgs::UInt8& msg) {
@@ -109,19 +131,14 @@ int main(int argc, char *argv[])
     ros::NodeHandle nh("~");
     drone = new DJIDrone(nh);
 
-    guidance_bias_correction_pub = nh.advertise<std_msgs::UInt8>("/guidance/bias_correction", 10);
     api_ctrl_sub = nh.subscribe("/ctrl_vel", 1, ctrl_vel_callback);
     api_cmd_sub  = nh.subscribe("/sdk_cmd",  1, sdk_cmd_callback);
+    gear_sub = nh.subscribe("/gear", 10, gearCallback);
 
-    std_msgs::UInt8 guidance_bias_correction;
-    guidance_bias_correction.data = 1;
-    for(int j=0;j<100;j++) {
-        guidance_bias_correction_pub.publish(guidance_bias_correction);
-}
     cout << "Publish done!" << endl;    
     
     while(ros::ok()){
-	guidance_bias_correction_pub.publish(guidance_bias_correction);
+
 	//cout << "Fuck!" << endl;
 	ros::spinOnce();
     }

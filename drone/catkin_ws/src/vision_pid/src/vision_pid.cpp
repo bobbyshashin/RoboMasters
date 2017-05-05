@@ -2,9 +2,9 @@
   ******************************************************************************
   * @file    pid_controller.cpp
   * @author  Bobby SHEN 
-  * @version V1.2.0
-  * @date    06-September-2016
-  * @brief   This is a PID controller node based on ROS, modified from gaowenliang's code
+  * @version V1.4.2
+  * @date    01-May-2017
+  * @brief   This is a vision-based PID controller, for RoboMasters 2017 UAV auto-landing 
   *           
   ******************************************************************************  
   */ 
@@ -21,16 +21,13 @@
 
 using namespace std;
 using namespace ros;
-//using namespace DJI::onboardSDK;
 
-ros::Publisher ctrl_vel_pub;
-ros::Publisher pos_error_pub;
+Publisher ctrl_vel_pub;
+Publisher pos_error_pub;
 
-ros::Subscriber pid_parameter_sub;       // For tuning PID parameters (Kp, Ki and Kd)
-ros::Subscriber target_pos_sub;          // Target position  
-ros::Subscriber current_pos_sub;         // Current position (calculated from sensor data)
-ros::Subscriber pid_ctrl_limit_sub;      // For tuning velocity limits 
-ros::Subscriber marker_center_sub;       // Centroid's coordinate of detected markers
+Subscriber pid_parameter_sub;       // For tuning PID parameters (Kp, Ki and Kd)
+Subscriber target_pos_sub;          // Target position  
+Subscriber marker_center_sub;       // Detected circle's center coordinate in camera frame
 
 PID *pid_vision_x;
 PID *pid_vision_y;
@@ -40,7 +37,7 @@ PID *pid_yaw;
 int camera_offset = 0;
 int gripper_offset = 0;
 
-/*****************************
+/****** UAV Body Frame *******
 *	     ^ x             *  
 *	     |               *
 *	     |               * 
@@ -52,9 +49,9 @@ int gripper_offset = 0;
 *	     |               *
 *****************************/
 
-double Kp_vision = 0.8;
+double Kp_vision = 0.001;
 double Ki_vision = 0;
-double Kd_vision = 0.1;
+double Kd_vision = 0.0005;
 
 double Kp_z;
 double Ki_z;
@@ -64,20 +61,22 @@ double Kp_yaw = 0;
 double Ki_yaw = 0;
 double Kd_yaw = 0;
 
-double pid_yaw_limit = 0;
-
-int img_center[2] = {376, 240}; // x & y center of image pixels
+int img_center[2] = {320, 240}; // x & y center of image pixels
 
 float ctrl_data[4] = {0, 0, 0, 0}; // Velocity of x, y, z and yaw
 float vision_ctrl[2] = {0, 0};
 
-float target_position[3] = {376, 240, 2.8};
+float target_position[3] = {0, 0, 2.8};
 float target_yaw = 0;
 
-float dt = 0.02;
+float dt = 0.1;
 
-double vision_ctrl_limit = 0.6;
+int threshold = 20;
+bool arrived = false;
+
+double visionLimit = 0.4;
 double height_ctrl_limit = 0.6;
+double pid_yaw_limit = 0;
 
 void delay_s(int x) { // delay in second
 
@@ -98,56 +97,18 @@ void window(float* src, float limit) {
  	*src = -limit;
 }
 
-void target_pos_callback(const geometry_msgs::Vector3& target_pos) {
-
-    /* Ignore tiny differences within 1 cm */
-    if( abs(target_pos.x) < 0.01 ) 
-        
-        target_position[0] = 0;
-
-    else 
-
-        target_position[0] = target_pos.x;
-
-
-    if( abs(target_pos.y) < 0.01 ) 
-        
-        target_position[1] = 0;
-
-    else 
-    
-        target_position[1] = target_pos.y;
-
-
-    if( target_pos.z < 2 && target_pos.z > 0.1 ) 
-        
-        target_position[2] = target_pos.z;
-    
-    else 
-    
-        target_position[2] = target_position[2];
-
-    /* Update the target position */
-    pid_vision_x->set_point(target_position[0]);
-    pid_vision_y->set_point(target_position[1]);
-    pid_z->set_point(target_position[2]);
-    pid_yaw->set_point(0);
- 
-}
-
-
-void pid_update(geometry_msgs::Vector3 current_position) {
+void pid_update() {
 
     /* PID position update */
-    ctrl_data[0] = pid_vision_x -> update(current_position.x, dt);
-    ctrl_data[1] = pid_vision_y -> update(current_position.y, dt);
-    ctrl_data[2] = pid_z -> update(current_position.z, dt);
+    ctrl_data[0] = pid_vision_x -> update(img_center[1], dt); // OpenCV's x-axis is drone's y-axis
+    ctrl_data[1] = pid_vision_y -> update(img_center[0], dt);
+    //ctrl_data[2] = pid_z -> update(current_position.z, dt);
     ctrl_data[3] = 0; //yaw
 
     /* Control speed limiting */
-    window(&ctrl_data[0], vision_ctrl_limit);
-    window(&ctrl_data[1], vision_ctrl_limit);
-    window(&ctrl_data[2], vision_ctrl_limit);
+    window(&ctrl_data[0], visionLimit);
+    window(&ctrl_data[1], visionLimit);
+    window(&ctrl_data[2], visionLimit);
 
     /* Publish the output control velocity from PID controller */
     geometry_msgs::Vector3 velocity;
@@ -161,20 +122,26 @@ void pid_update(geometry_msgs::Vector3 current_position) {
 
 }
 
-void current_pos_callback(const geometry_msgs::Vector3& current_position) {
+void target_pos_callback(const geometry_msgs::Vector3& target_pos) {
 
-    geometry_msgs::Vector3 pos_error;
+    //TODO do some boundary checking and filtering
+    target_position[0] = target_pos.x;
+    target_position[1] = target_pos.y;
+    if( target_pos.z < 2 && target_pos.z > 0.1 ) 
+        target_position[2] = target_pos.z;
+    else 
+        target_position[2] = target_position[2];
 
-    pos_error.x = target_position[0] - current_position.x;
-    pos_error.y = target_position[1] - current_position.y;
-    pos_error.z = target_position[2] - current_position.z;
+    if((target_position[0] - img_center[0] <= threshold) && (target_position[1] - img_center[1] <= threshold))
+	arrived = true;
+    /* Update the target position */
+    pid_vision_x->set_point(target_position[0]);
+    pid_vision_y->set_point(target_position[1]);
+    pid_z->set_point(target_position[2]);
+    pid_yaw->set_point(0);
 
-    pos_error_pub.publish(pos_error);
-
-    cout << "error_x -> " << pos_error.x << "      error_y -> " << pos_error.y << endl << "      error_z -> " << pos_error.z << endl;
-
-    pid_update(current_position);
-
+    pid_update();
+ 
 }
 
 void vision_ctrl_callback(const geometry_msgs::Vector3& msg) {
@@ -198,68 +165,35 @@ void pid_parameter_tuning_callback(const geometry_msgs::Vector3& msg) {
 
 }
 
-void pid_parameter_vert_tuning_callback(const geometry_msgs::Vector3& msg) {
-
-    pid_z -> set_param(msg.x, msg.y, msg.z); //Set Kp, Ki & Kd
-
-    cout << "PID parameters for vertical position control have been updated!" << endl;
-
-    cout << "Kp: " << msg.x << endl;
-    cout << "Ki: " << msg.y << endl;
-    cout << "Kd: " << msg.z << endl;
-
-}
-
-void pid_ctrl_limit_callback(const geometry_msgs::Vector3& msg) {
-
-    //pid_ctrl_limit_horz = msg.x;
-    //pid_ctrl_limit_vert = msg.y;
-    
-    //cout << "Speed limit has been updated!" << endl;
-    //cout << "Horizontal: " << pid_ctrl_limit_horz << " m/s" << endl;
-    //cout << "Vertical: " << pid_ctrl_limit_vert << " m/s" << endl;
-}
-
 int main(int argc, char** argv) {
 
     ros::init(argc, argv, "pid_controller");
     ros::NodeHandle nh("~");
-    std_msgs::UInt8 bias_correction_msg;
 
-    //drone = new DJIDrone(nh);
-
-
-    pid_z   = new PID( Kp_z, Ki_z, Kd_z, -5, 5, -height_ctrl_limit, height_ctrl_limit, false);
-    pid_yaw = new PID( Kp_yaw, Ki_yaw, Kd_yaw, -5, 5, -pid_yaw_limit, pid_yaw_limit, false);
-
-    pid_vision_x = new PID(Kp_vision, Ki_vision, Kd_vision, -5, 5, -vision_ctrl_limit, vision_ctrl_limit, false);
-    pid_vision_y = new PID(Kp_vision, Ki_vision, Kd_vision, -5, 5, -vision_ctrl_limit, vision_ctrl_limit, false);
+    pid_vision_x = new PID(Kp_vision, Ki_vision, Kd_vision, 0, 0, -visionLimit, visionLimit, false);
+    pid_vision_y = new PID(Kp_vision, Ki_vision, Kd_vision, 0, 0, -visionLimit, visionLimit, false);
+    pid_z   = new PID( Kp_z, Ki_z, Kd_z, 0, 0, -height_ctrl_limit, height_ctrl_limit, false);
+    pid_yaw = new PID( Kp_yaw, Ki_yaw, Kd_yaw, 0, 0, -pid_yaw_limit, pid_yaw_limit, false);
 
     //vision_pid_x->set_point(target_position[0]);
     //vision_pid_y->set_point(target_position[1]);
     pid_z->set_point(target_position[2]);
     pid_yaw->set_point(target_yaw);
 
-    pid_vision_x->set_point(img_center[0]);
-    pid_vision_y->set_point(img_center[1]);
+    pid_vision_x->set_point(img_center[1]); // OpenCV's x-axis is drone's y-axis
+    pid_vision_y->set_point(img_center[0]);
 
-    ros::Rate loop_rate(50);
+    ros::Rate loop_rate(20);
 
     target_pos_sub       = nh.subscribe("/target_position",  1, target_pos_callback);
-    current_pos_sub      = nh.subscribe("/current_position", 1, current_pos_callback);
-
     pid_parameter_sub    = nh.subscribe("/pid_parameter",    1, pid_parameter_tuning_callback);
-    //pid_parameter_vert_sub = nh.subscribe("/pid_vert_parameter",    1, pid_parameter_vert_tuning_callback);
-    //TODO Union both horz and vert pid param into one subscriber or do a better renaming with two
-    pid_ctrl_limit_sub   = nh.subscribe("/pid_ctrl_limit",   1, pid_ctrl_limit_callback);
-
     marker_center_sub = nh.subscribe("/marker_centers", 1, vision_ctrl_callback);
 
     ctrl_vel_pub         = nh.advertise<geometry_msgs::Vector3>("/ctrl_vel", 10);
     pos_error_pub        = nh.advertise<geometry_msgs::Vector3>("/position_error", 1);
 
-    cout << "PID controller activated!" << endl;
-    cout << "Last modified: " << "2017-03-15" << endl;
+    cout << "PID controller is activated!" << endl;
+    cout << "Last modified: " << "2017-05-01" << endl;
     
     while(ros::ok()) {
 
