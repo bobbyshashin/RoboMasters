@@ -47,44 +47,44 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Documents/RoboMasters/Infantry/rune
+CMAKE_SOURCE_DIR = /home/ubuntu/Documents/RoboMasters/infantry/rune
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Documents/RoboMasters/Infantry/rune
+CMAKE_BINARY_DIR = /home/ubuntu/Documents/RoboMasters/infantry/rune
 
 #=============================================================================
-# Target rules for target CMakeFiles/test.dir
+# Target rules for target CMakeFiles/function_test.dir
 
 # All Build rule for target.
-CMakeFiles/test.dir/all:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/depend
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles  1
-	@echo "Built target test"
-.PHONY : CMakeFiles/test.dir/all
+CMakeFiles/function_test.dir/all:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/depend
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles  1
+	@echo "Built target function_test"
+.PHONY : CMakeFiles/function_test.dir/all
 
 # Include target in all.
-all: CMakeFiles/test.dir/all
+all: CMakeFiles/function_test.dir/all
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles 0
-.PHONY : CMakeFiles/test.dir/rule
+CMakeFiles/function_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/function_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles 0
+.PHONY : CMakeFiles/function_test.dir/rule
 
 # Convenience name for target.
-test: CMakeFiles/test.dir/rule
-.PHONY : test
+function_test: CMakeFiles/function_test.dir/rule
+.PHONY : function_test
 
 # clean rule for target.
-CMakeFiles/test.dir/clean:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/clean
-.PHONY : CMakeFiles/test.dir/clean
+CMakeFiles/function_test.dir/clean:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/clean
+.PHONY : CMakeFiles/function_test.dir/clean
 
 # clean rule for target.
-clean: CMakeFiles/test.dir/clean
+clean: CMakeFiles/function_test.dir/clean
 .PHONY : clean
 
 #=============================================================================

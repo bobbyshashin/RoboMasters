@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ubuntu/Documents/RoboMasters/Infantry/rune/main.cpp" "/home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles/test.dir/main.cpp.o"
+  "/home/ubuntu/Documents/RoboMasters/infantry/rune/getImgs.cpp" "/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/function_test.dir/getImgs.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 

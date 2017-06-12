@@ -6,5 +6,5 @@ find_package( CUDA QUIET REQUIRED)
 set(CUDA_NVCC_FLAGS
     ${CUDA_NVCC_FLAGS};
     -O3 -gencode arch=compute_22,code=sm_22)
-add_executable( test main.cpp)
-target_link_libraries( test ${OpenCV_LIBS})
+add_executable( function_test getImgs.cpp)
+target_link_libraries( function_test ${OpenCV_LIBS})

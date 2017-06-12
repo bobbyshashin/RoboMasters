@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ubuntu/Documents/RoboMasters/Infantry/rune
+CMAKE_SOURCE_DIR = /home/ubuntu/Documents/RoboMasters/infantry/rune
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ubuntu/Documents/RoboMasters/Infantry/rune
+CMAKE_BINARY_DIR = /home/ubuntu/Documents/RoboMasters/infantry/rune
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,9 +69,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles /home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -99,41 +99,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test
+# Target rules for targets named function_test
 
 # Build rule for target.
-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test
-.PHONY : test
+function_test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 function_test
+.PHONY : function_test
 
 # fast build rule for target.
-test/fast:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
-.PHONY : test/fast
+function_test/fast:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/build
+.PHONY : function_test/fast
 
-main.o: main.cpp.o
-.PHONY : main.o
+getImgs.o: getImgs.cpp.o
+.PHONY : getImgs.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/main.cpp.o
-.PHONY : main.cpp.o
+getImgs.cpp.o:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/getImgs.cpp.o
+.PHONY : getImgs.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+getImgs.i: getImgs.cpp.i
+.PHONY : getImgs.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/main.cpp.i
-.PHONY : main.cpp.i
+getImgs.cpp.i:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/getImgs.cpp.i
+.PHONY : getImgs.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+getImgs.s: getImgs.cpp.s
+.PHONY : getImgs.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/main.cpp.s
-.PHONY : main.cpp.s
+getImgs.cpp.s:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/getImgs.cpp.s
+.PHONY : getImgs.cpp.s
 
 # Help Target
 help:
@@ -142,11 +142,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... function_test"
 	@echo "... rebuild_cache"
-	@echo "... test"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... getImgs.o"
+	@echo "... getImgs.i"
+	@echo "... getImgs.s"
 .PHONY : help
 
 

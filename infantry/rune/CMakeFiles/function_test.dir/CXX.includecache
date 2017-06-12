@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/Documents/RoboMasters/Infantry/rune/main.cpp
+/home/ubuntu/Documents/RoboMasters/infantry/rune/getImgs.cpp
 stdio.h
 -
 stdlib.h

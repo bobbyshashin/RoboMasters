@@ -1,1 +1,1 @@
-/home/ubuntu/Documents/RoboMasters/Infantry/rune/CMakeFiles/test.dir
+/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/function_test.dir
