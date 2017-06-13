@@ -14,6 +14,9 @@ int thresh = 182;
 int max_thresh = 255;
 RNG rng(12345); // random number generator
 
+void cnn_init(const std::string &dictionary);
+int recognize(cv::Mat img);
+
 void getImgs(Mat original_img, Mat& img, vector<Mat>*& single_imgs) {
 
     img = original_img;
@@ -72,7 +75,7 @@ void getImgs(Mat original_img, Mat& img, vector<Mat>*& single_imgs) {
 
 int main(int argc, char** argv )
 {
-    
+	cnn_init("LeNet-model");	
     Mat original_img, img;
     original_img = imread("1.bmp");
     if ( !original_img.data )
@@ -96,6 +99,7 @@ int main(int argc, char** argv )
 		char num = i - '0';
 		namedWindow("single_img "+num, WINDOW_AUTOSIZE );
 		imshow("single_img "+num, single_imgs->at(i));
+		cout << recognize(single_imgs->at(i)) << endl;
 	}
 
     waitKey(0);
