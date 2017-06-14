@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Sampli_Save_Demo" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Sampli_Save_Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../include" />
+					<Add directory="../../libusb/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lrt" />
+					<Add option="-pthread" />
+					<Add library="../../lib/DEBUG-Static/libMVSDK.a" />
+					<Add library="../../libusb/lib/libusb-1.0.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Sampli_Save_Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="/lib/libMVSDK.so" />
+				</Linker>
+			</Target>
+			<Target title="TQ210-Debug">
+				<Option output="bin/TQ210-Debug/Sampli_Save_Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/TQ210-Debug/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lrt" />
+					<Add option="-lpthread" />
+					<Add library="/lib/libMVSDK.so" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp bin/TQ210-Debug/Sampli_Save_Demo  /rootnfs" />
+				</ExtraCommands>
+			</Target>
+			<Target title="ARM-Debug">
+				<Option output="bin/ARM-Debug/Sampli_Save_Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/ARM-Debug/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../include" />
+					<Add directory="../../libusb/arm/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lrt" />
+					<Add option="-lpthread" />
+					<Add library="../../lib/ARM-Static/libMVSDK.a" />
+					<Add library="../../libusb/arm/lib/libusb-1.0.a" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp bin/ARM-Debug/Sampli_Save_Demo  /rootnfs" />
+				</ExtraCommands>
+			</Target>
+			<Target title="raspbian-Debug">
+				<Option output="bin/raspbian-Debug/Sampli_Save_Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/raspbian-Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lrt" />
+					<Add option="-lpthread" />
+					<Add library="/lib/libMVSDK.so" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp bin/TQ210-Debug/Sampli_Save_Demo  /rootnfs" />
+				</ExtraCommands>
+			</Target>
+			<Target title="XU4-Debug">
+				<Option output="bin/XU4-Debug/Sampli_Save_Demo" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/XU4-Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-lrt" />
+					<Add option="-lpthread" />
+					<Add library="/lib/libMVSDK.so" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="cp bin/XU4-Debug/Sampli_Save_Demo  /rootnfs" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="RLE.h">
+			<Option target="Debug" />
+			<Option target="Release" />
+			<Option target="TQ210-Debug" />
+			<Option target="raspbian-Debug" />
+			<Option target="XU4-Debug" />
+		</Unit>
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger>
+				<remote_debugging target="ARM-Debug">
+					<options conn_type="0" serial_baud="115200" ip_address="192.168.1.223" ip_port="10000" />
+				</remote_debugging>
+			</debugger>
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

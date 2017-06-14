@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="inc/Demo.h" open="0" top="0" tabpos="4">
+		<Cursor position="149" topLine="0" />
+	</File>
+	<File name="inc/interface.h" open="0" top="0" tabpos="3">
+		<Cursor position="123" topLine="0" />
+	</File>
+	<File name="multicamera_demo.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="2453" topLine="66" />
+	</File>
+	<File name="src/Demo.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="803" topLine="42" />
+	</File>
+	<File name="src/callbacks.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="3541" topLine="83" />
+	</File>
+	<File name="src/interface.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="3826" topLine="108" />
+	</File>
+</CodeBlocks_layout_file>
