@@ -57,7 +57,7 @@ enum pinDirections {
 enum pinValues {
 
 	low = 0,
-    	high = 1,
+    high = 1,
 };
 
 enum manifoldGPIONumber {
