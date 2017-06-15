@@ -831,3 +831,83 @@ make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMa
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED succeded with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec340359214/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec340359214.dir/build.make CMakeFiles/cmTryCompileExec340359214.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec340359214.dir/src.c.o
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTryCompileExec340359214.dir/src.c.o   -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec340359214
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec340359214.dir/link.txt --verbose=1
+/usr/bin/cc   -DOpenMP_FLAG_DETECTED -fopenmp     CMakeFiles/cmTryCompileExec340359214.dir/src.c.o  -o cmTryCompileExec340359214 -rdynamic 
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED succeded with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2445889560/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2445889560.dir/build.make CMakeFiles/cmTryCompileExec2445889560.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2445889560.dir/src.cxx.o
+/usr/bin/c++    -std=c++11 -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTryCompileExec2445889560.dir/src.cxx.o -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2445889560
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2445889560.dir/link.txt --verbose=1
+/usr/bin/c++    -std=c++11 -DOpenMP_FLAG_DETECTED -fopenmp     CMakeFiles/cmTryCompileExec2445889560.dir/src.cxx.o  -o cmTryCompileExec2445889560 -rdynamic 
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Determining if files pthread.h exist passed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec378401032/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec378401032.dir/build.make CMakeFiles/cmTryCompileExec378401032.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec378401032.dir/CheckIncludeFiles.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec378401032.dir/CheckIncludeFiles.c.o   -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTryCompileExec378401032
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec378401032.dir/link.txt --verbose=1
+/usr/bin/cc        CMakeFiles/cmTryCompileExec378401032.dir/CheckIncludeFiles.c.o  -o cmTryCompileExec378401032 -rdynamic 
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1988866165/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1988866165.dir/build.make CMakeFiles/cmTryCompileExec1988866165.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1988866165.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1988866165.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1988866165
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1988866165.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create     CMakeFiles/cmTryCompileExec1988866165.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1988866165 -rdynamic -lpthread 
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+
+

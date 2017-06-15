@@ -8,14 +8,22 @@
 using namespace std;
 using namespace cv;
 
-int offset_x = 0;
-int offset_y = 0;
+int offset_x = 5;
+int offset_y = 5;
 int thresh = 182;
 int max_thresh = 255;
-RNG rng(12345); // random number generator
 
-void cnn_init(const std::string &dictionary);
-int recognize(cv::Mat img);
+RNG rng(12345); // random number generator
+std::string Model_Path = "LeNet-model";
+
+int recognize(cv::Mat img, const std::string &dictionary);
+
+Rect cropRect(Rect rect, int x_offset_tl, int y_offset_tl, int x_offset_br, int y_offset_br) {
+
+        return Rect( Point(rect.tl().x + x_offset_tl, rect.tl().y + y_offset_tl), Point(rect.br().x + x_offset_br, rect.br().y + y_offset_br) );
+        
+
+}
 
 void getImgs(Mat original_img, Mat& img, vector<Mat>*& single_imgs) {
 
@@ -43,7 +51,7 @@ void getImgs(Mat original_img, Mat& img, vector<Mat>*& single_imgs) {
     for( int i = 0; i < contours.size(); i++ ) {  
         approxPolyDP( contours[i], contours_polys[i], 3, true );
         boundRects[i] = boundingRect( Mat(contours_polys[i]) );
-		croppedBoundRects[i] = boundRects[i] + Size(offset_x, offset_y);	
+		croppedBoundRects[i] = cropRect(boundRects[i], offset_x, offset_y, -offset_x, -offset_y);	
      }
 
     /* Check Rect Height-Width Ratio */
@@ -60,22 +68,30 @@ void getImgs(Mat original_img, Mat& img, vector<Mat>*& single_imgs) {
 		rectangle( img, croppedBoundRects[i], Scalar(255, 255, 255), -1, 8, 0 );
     }
 
-    cvtColor(img, img, CV_GRAY2BGR);
-    //cvtColor(original_img, original_img, CV_BGR2GRAY);
-    bitwise_and(original_img, img, img);
-	
-	/* Convert one whole image to 9 same image */
+	cvtColor(img, img, CV_GRAY2BGR);
+	//cvtColor(original_img, original_img, CV_BGR2GRAY);
+	bitwise_and(original_img, img, img);
+
+	/*
+	Mat temp;
+	GaussianBlur(img, temp, cv::Size(0, 0), 3);
+	addWeighted(img, 1.5, temp, -0.5, 0, temp);
+	temp.copyTo(img);  
+	*/
+
+	/* Convert one whole image to 9 small images */
 	single_imgs = new vector<Mat>(croppedBoundRects.size());
 	for(int i = 0; i < single_imgs->size(); i++) {
 		img(croppedBoundRects[i]).copyTo(single_imgs->at(i));
-		resize(single_imgs->at(i), single_imgs->at(i), Size(28*4, 28*4));
+		resize(single_imgs->at(i), single_imgs->at(i), Size(28, 28));
+		//copyMakeBorder(single_imgs->at(i), single_imgs->at(i), 2, 2, 2,2, BORDER_CONSTANT, Scalar(255, 255, 255));
 		cout << "Size "<< i <<": "<< single_imgs->at(i).size() << boundRects[i].size()  <<endl;
+		cvtColor(single_imgs->at(i), single_imgs->at(i), CV_BGR2GRAY);
 	}
 }
 
 int main(int argc, char** argv )
 {
-	cnn_init("LeNet-model");	
     Mat original_img, img;
     original_img = imread("1.bmp");
     if ( !original_img.data )
@@ -97,9 +113,9 @@ int main(int argc, char** argv )
 			return -1;
 		}
 		char num = i - '0';
-		namedWindow("single_img "+num, WINDOW_AUTOSIZE );
-		imshow("single_img "+num, single_imgs->at(i));
-		cout << recognize(single_imgs->at(i)) << endl;
+		namedWindow("0"+num, WINDOW_AUTOSIZE );
+		imshow("0"+num, single_imgs->at(i));
+		cout << recognize(single_imgs->at(i), Model_Path) << endl;
 	}
 
     waitKey(0);
