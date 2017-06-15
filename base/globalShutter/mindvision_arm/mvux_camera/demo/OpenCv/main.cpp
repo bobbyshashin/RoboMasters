@@ -52,6 +52,8 @@ Mat cameraFrame;
 unsigned int detectRedShield = low;
 
 bool firstFrame = false;
+bool detected = false;
+int detected_counter = 0;
 GPIO toggleButton = gpio157;
 
 struct timeval tv_begin;
@@ -255,7 +257,7 @@ void processImg(){
             hsvFrame = temp1 | temp2;
         }
         else
-            inRange(hsvFrame, blueLowerRange2, blueUpperRange2, hsvFrame);
+            inRange(hsvFrame, blueLowerRange, blueUpperRange, hsvFrame);
 
         // Thresholded image back to RGB
         cvtColor(hsvFrame, hsvFrame, COLOR_GRAY2RGB);
@@ -324,22 +326,36 @@ void processImg(){
                 Point midpoint = (candidateEllipses[0].shape.center + candidateEllipses[1].shape.center) * 0.5;
                 ellipse(thresholdedFrame, candidateEllipses[0].shape, Scalar(255, 255, 255), CV_FILLED);
                 ellipse(thresholdedFrame, candidateEllipses[1].shape, Scalar(255, 255, 255), CV_FILLED);
-
-                CVSerialDataX = midpoint.x - 320;
-                CVSerialDataY = 240 - midpoint.y;
+		if(detected_counter < 5)
+		    detected_counter++;
+		if(detected_counter > 1) {
+                    CVSerialDataX = midpoint.x - 320;
+                    CVSerialDataY = 240 - midpoint.y;
+		    detected = true;
+                }
             } else {
-                CVSerialDataX = -888;
-                CVSerialDataY = 999;
+		detected = false;
+		if(detected_counter > 0)
+		    detected_counter--;
+		else if(detected_counter < 2) {
+                    CVSerialDataX = -888;
+                    CVSerialDataY = 999;
+		}
             }
         } else {
-            CVSerialDataX = -888;
-            CVSerialDataY = 999;
+	    detected = false;
+	    if(detected_counter > 0)
+   	    	detected_counter--;
+            else if(detected_counter < 2) {
+                    CVSerialDataX = -888;
+                    CVSerialDataY = 999;
+		}
         }
 
         bitwise_and(cameraFrame, thresholdedFrame, thresholdedFrame);
 
         // If there is a candidate shield target available but the color is wrong, stop aiming.
-       cout << (detectRedShield ? "DETECTING RED" : "DETECTING BLUE") << " [" << CVSerialDataX << ", " << CVSerialDataY << "]" << endl;
+        cout << (detectRedShield ? "DETECTING RED" : "DETECTING BLUE") << " [" << CVSerialDataX << ", " << CVSerialDataY << "]" << endl;
 
         circle(thresholdedFrame, Point(CVSerialDataX + 320, 240 - CVSerialDataY), 5, Scalar(255, 255, 255));
 
