@@ -16,7 +16,8 @@ int max_thresh = 255;
 RNG rng(12345); // random number generator
 std::string Model_Path = "LeNet-model";
 
-int recognize(cv::Mat img, const std::string &dictionary);
+int recognize(cv::Mat img);
+void cnn_init(const std::string &dictionary);
 
 Rect cropRect(Rect rect, int x_offset_tl, int y_offset_tl, int x_offset_br, int y_offset_br) {
 
@@ -87,6 +88,7 @@ void getImgs(Mat original_img, Mat& img, vector<Mat>*& single_imgs) {
 		//copyMakeBorder(single_imgs->at(i), single_imgs->at(i), 2, 2, 2,2, BORDER_CONSTANT, Scalar(255, 255, 255));
 		cout << "Size "<< i <<": "<< single_imgs->at(i).size() << boundRects[i].size()  <<endl;
 		cvtColor(single_imgs->at(i), single_imgs->at(i), CV_BGR2GRAY);
+		threshold(single_imgs->at(i), single_imgs->at(i), 120, 100, 3);
 	}
 }
 
@@ -94,6 +96,7 @@ int main(int argc, char** argv )
 {
     Mat original_img, img;
     original_img = imread("1.bmp");
+    cnn_init("LeNet-model");
     if ( !original_img.data )
     {
         printf("No orignal image data \n");
@@ -115,7 +118,7 @@ int main(int argc, char** argv )
 		char num = i - '0';
 		namedWindow("0"+num, WINDOW_AUTOSIZE );
 		imshow("0"+num, single_imgs->at(i));
-		cout << recognize(single_imgs->at(i), Model_Path) << endl;
+		cout << recognize(single_imgs->at(i)) << endl;
 	}
 
     waitKey(0);

@@ -23,6 +23,8 @@ double rescale(double x) {
   return 100.0 * (x - a.scale().first) / (a.scale().second - a.scale().first);
 }
 
+
+network<sequential> nn;
 void convert_image(cv::Mat img,
                    double minv,
 					double maxv,
@@ -39,11 +41,11 @@ void convert_image(cv::Mat img,
     std::transform(resized.begin(), resized.end(), std::back_inserter(data),
         [=](uint8_t c) { return (255 - c) * (maxv - minv) / 255.0 + minv; });
 }
-/*
+
 void cnn_init(const std::string &dictionary){
 	nn.load(dictionary);
 }
-*/
+
 // Construct vec_t image representation
 tiny_dnn::vec_t mat2vec_t(cv::Mat _mat)
 {
@@ -65,10 +67,10 @@ tiny_dnn::vec_t mat2vec_t(cv::Mat _mat)
     }
 	return ovect;
 }
-int recognize(cv::Mat img, const std::string &dictionary) {
+int recognize(cv::Mat img) {
 
-    static network<sequential> nn;
-    nn.load(dictionary);
+    //network<sequential> nn;
+    //nn.load(dictionary);
     // convert imagefile to vec_t
     vec_t data;
     convert_image(img, -1.0, 1.0, 32, 32, data);
