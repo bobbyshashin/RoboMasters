@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="GTK_demo.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="3045" topLine="83" />
+	</File>
+	<File name="inc/Demo.h" open="0" top="0" tabpos="3">
+		<Cursor position="759" topLine="31" />
+	</File>
+	<File name="inc/callbacks.h" open="0" top="0" tabpos="5">
+		<Cursor position="964" topLine="19" />
+	</File>
+	<File name="inc/interface.h" open="0" top="0" tabpos="4">
+		<Cursor position="122" topLine="6" />
+	</File>
+	<File name="inc/support.h" open="0" top="0" tabpos="7">
+		<Cursor position="163" topLine="0" />
+	</File>
+	<File name="src/Demo.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1879" topLine="38" />
+	</File>
+	<File name="src/callbacks.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="1794" topLine="45" />
+	</File>
+	<File name="src/interface.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="2677" topLine="59" />
+	</File>
+	<File name="src/support.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

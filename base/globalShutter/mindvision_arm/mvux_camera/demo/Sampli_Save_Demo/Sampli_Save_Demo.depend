@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1388993722 source:/home/mindvision/mindvision/mindvision/MindVision_Demo_simpli/demo/Sampli_Save_Demo/main.cpp
+	<iostream>
+	"CameraApi.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1388549757 /home/mindvision/mindvision/mindvision/MindVision_Demo_simpli/include/CameraApi.h
+	"CameraDefine.h"
+	"CameraStatus.h"
+
+1388504405 /home/mindvision/mindvision/mindvision/MindVision_Demo_simpli/include/CameraDefine.h
+	"CameraStatus.h"
+
+1388504409 /home/mindvision/mindvision/mindvision/MindVision_Demo_simpli/include/CameraStatus.h
+
+1396424791 source:/home/mindvision/mindvision/mindvision/mindvision_develop/src/demo/Sampli_Save_Demo/main.cpp
+	<iostream>
+	"CameraApi.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1388549757 /home/mindvision/mindvision/mindvision/mindvision_develop/src/include/CameraApi.h
+	"CameraDefine.h"
+	"CameraStatus.h"
+
+1388504405 /home/mindvision/mindvision/mindvision/mindvision_develop/src/include/CameraDefine.h
+	"CameraStatus.h"
+
+1388504409 /home/mindvision/mindvision/mindvision/mindvision_develop/src/include/CameraStatus.h
+
+1417504748 source:/home/mindvision/mindvision/src/mindvision_develop/src/demo/Sampli_Save_Demo/main.cpp
+	<iostream>
+	"CameraApi.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+
+1404811125 /home/mindvision/mindvision/src/mindvision_develop/src/include/CameraApi.h
+	"CameraDefine.h"
+	"CameraStatus.h"
+
+1416989809 /home/mindvision/mindvision/src/mindvision_develop/src/include/CameraDefine.h
+	"CameraStatus.h"
+
+1404810546 /home/mindvision/mindvision/src/mindvision_develop/src/include/CameraStatus.h
+
+1415523723 source:/home/mindvision/mindvision/src/mindvision_develop/src/demo/Sampli_Save_Demo/RLE.cpp
+	"RLE.h"
+
+1415523378 /home/mindvision/mindvision/src/mindvision_develop/src/demo/Sampli_Save_Demo/RLE.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
