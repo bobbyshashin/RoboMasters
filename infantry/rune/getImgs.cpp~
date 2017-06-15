@@ -121,7 +121,7 @@ void getCode(Mat original_img) {
     Point(erosion_size, erosion_size) );
     */
     Mat structuringElement = getStructuringElement(MORPH_RECT, Size(1, 1));
-    morphologyEx(hsvFrame, hsvFrame, MORPH_OPEN, structuringElement, Point(-1, -1), 3);
+    morphologyEx(hsvFrame, hsvFrame, MORPH_OPEN, structuringElement, Point(-1, -1), 2);
     morphologyEx(hsvFrame, hsvFrame, MORPH_CLOSE, structuringElement, Point(-1, -1), 1);
 
 
