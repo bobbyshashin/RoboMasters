@@ -25,7 +25,7 @@ unsigned char           * g_pRgbBuffer;     //处理后数据缓存区
 #define TRUE   0
 
 #ifndef SHOW_IMG
-#define SHOW_IMG
+//#define SHOW_IMG
 #endif
 
 #define LOW_H_RED 20
@@ -44,6 +44,7 @@ unsigned char           * g_pRgbBuffer;     //处理后数据缓存区
 #define HIGH_S_BLUE 255
 #define HIGH_V_BLUE 255
 
+int offset_y = 80;
 short CVSerialDataX = -888;
 short CVSerialDataY = 999;
 int fd = 0;
@@ -56,6 +57,7 @@ bool detected = false;
 int detected_counter = 0;
 GPIO toggleButton = gpio157;
 
+struct timeval tv_initial;
 struct timeval tv_begin;
 struct timeval tv_end;
 
@@ -130,9 +132,11 @@ int UART0_Send(int fd, char *send_buf, int data_len) {
     }
 }
 
+int a = 0;
 void serialSetup() {
-    int err;
-    char port[] = "/dev/ttyTHS1";
+    int err;  
+	
+    char port[] = "/dev/ttyTHS2";
 
     fd = UART0_Open(fd, port);
     do {
@@ -328,9 +332,9 @@ void processImg(){
                 ellipse(thresholdedFrame, candidateEllipses[1].shape, Scalar(255, 255, 255), CV_FILLED);
 		if(detected_counter < 5)
 		    detected_counter++;
-		if(detected_counter > 1) {
+		if(detected_counter > 0) {
                     CVSerialDataX = midpoint.x - 320;
-                    CVSerialDataY = 240 - midpoint.y;
+                    CVSerialDataY = 240 - midpoint.y + offset_y;
 		    detected = true;
                 }
             } else {
@@ -355,7 +359,7 @@ void processImg(){
         bitwise_and(cameraFrame, thresholdedFrame, thresholdedFrame);
 
         // If there is a candidate shield target available but the color is wrong, stop aiming.
-        cout << (detectRedShield ? "DETECTING RED" : "DETECTING BLUE") << " [" << CVSerialDataX << ", " << CVSerialDataY << "]" << endl;
+        cout << (detectRedShield ? "DETECTING BLUE" : "DETECTING RED") << " [" << CVSerialDataX << ", " << CVSerialDataY << "]" << endl;
 
         circle(thresholdedFrame, Point(CVSerialDataX + 320, 240 - CVSerialDataY), 5, Scalar(255, 255, 255));
 
@@ -374,7 +378,9 @@ void processImg(){
         gettimeofday(&tv_end,NULL);
     
         double time_diff = (tv_end.tv_usec-tv_begin.tv_usec)/1000;
+        double total_time = (tv_end.tv_sec - tv_initial.tv_sec);
         cout << "Loop time: " << time_diff << " ms" << endl;
+        cout << "Total time: " << total_time << endl;
     }
 }
 
@@ -413,7 +419,7 @@ void grabImg(){
 
 int main()
 {
-
+    gettimeofday(&tv_initial,NULL);
     CameraSdkInit(1);
     // Enumerate devices and create device list
     CameraEnumerateDevice(&tCameraEnumList,&iCameraCounts);
@@ -456,7 +462,7 @@ int main()
     /* Manifold */
     setUseOptimized(true);
     cout << checkHardwareSupport(CV_CPU_SSE2);
-    namedWindow(windowTitle);
+    //namedWindow(windowTitle);
 
     serialSetup();
     serialStart();
