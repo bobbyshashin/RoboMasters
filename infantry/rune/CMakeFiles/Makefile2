@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/ubuntu/Documents/RoboMasters/infantry/rune
 CMakeFiles/function_test.dir/all:
 	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/depend
 	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles  1 2
 	@echo "Built target function_test"
 .PHONY : CMakeFiles/function_test.dir/all
 
@@ -69,7 +69,7 @@ all: CMakeFiles/function_test.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/function_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/function_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles 0
 .PHONY : CMakeFiles/function_test.dir/rule

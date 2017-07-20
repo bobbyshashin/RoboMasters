@@ -1,0 +1,230 @@
+Determining if the CL_VERSION_2_0 exist failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec343970918/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec343970918.dir/build.make CMakeFiles/cmTryCompileExec343970918.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec343970918.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec343970918.dir/CheckSymbolExists.c.o   -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:47: fatal error: OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h: No such file or directory
+ #include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+                                               ^
+compilation terminated.
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make[1]: *** [CMakeFiles/cmTryCompileExec343970918.dir/CheckSymbolExists.c.o] Error 1
+make: *** [cmTryCompileExec343970918/fast] Error 2
+
+File /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef CL_VERSION_2_0
+  return ((int*)(&CL_VERSION_2_0))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the CL_VERSION_1_2 exist failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec63378881/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec63378881.dir/build.make CMakeFiles/cmTryCompileExec63378881.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec63378881.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec63378881.dir/CheckSymbolExists.c.o   -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:47: fatal error: OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h: No such file or directory
+ #include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+                                               ^
+compilation terminated.
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make[1]: *** [CMakeFiles/cmTryCompileExec63378881.dir/CheckSymbolExists.c.o] Error 1
+make: *** [cmTryCompileExec63378881/fast] Error 2
+
+File /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef CL_VERSION_1_2
+  return ((int*)(&CL_VERSION_1_2))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the CL_VERSION_1_1 exist failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec4004306032/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec4004306032.dir/build.make CMakeFiles/cmTryCompileExec4004306032.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4004306032.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec4004306032.dir/CheckSymbolExists.c.o   -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:47: fatal error: OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h: No such file or directory
+ #include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+                                               ^
+compilation terminated.
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make[1]: *** [CMakeFiles/cmTryCompileExec4004306032.dir/CheckSymbolExists.c.o] Error 1
+make: *** [cmTryCompileExec4004306032/fast] Error 2
+
+File /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef CL_VERSION_1_1
+  return ((int*)(&CL_VERSION_1_1))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the CL_VERSION_1_0 exist failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2524116624/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2524116624.dir/build.make CMakeFiles/cmTryCompileExec2524116624.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2524116624.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2524116624.dir/CheckSymbolExists.c.o   -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:47: fatal error: OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h: No such file or directory
+ #include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+                                               ^
+compilation terminated.
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make[1]: *** [CMakeFiles/cmTryCompileExec2524116624.dir/CheckSymbolExists.c.o] Error 1
+make: *** [cmTryCompileExec2524116624/fast] Error 2
+
+File /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <OpenCL_INCLUDE_DIR-NOTFOUND/CL/cl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef CL_VERSION_1_0
+  return ((int*)(&CL_VERSION_1_0))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Performing C++ SOURCE FILE Test COMPILER_HAS_SSE_FLAG failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2056548189/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2056548189.dir/build.make CMakeFiles/cmTryCompileExec2056548189.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2056548189.dir/src.cxx.o
+/usr/bin/c++    -std=c++11 -pthread -DCOMPILER_HAS_SSE_FLAG   -msse3 -o CMakeFiles/cmTryCompileExec2056548189.dir/src.cxx.o -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-msse3'
+make[1]: *** [CMakeFiles/cmTryCompileExec2056548189.dir/src.cxx.o] Error 1
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec2056548189/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_HAS_AVX_FLAG failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec952120606/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec952120606.dir/build.make CMakeFiles/cmTryCompileExec952120606.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec952120606.dir/src.cxx.o
+/usr/bin/c++    -std=c++11 -pthread -DCOMPILER_HAS_AVX_FLAG   -mavx -o CMakeFiles/cmTryCompileExec952120606.dir/src.cxx.o -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-mavx'
+make[1]: *** [CMakeFiles/cmTryCompileExec952120606.dir/src.cxx.o] Error 1
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec952120606/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_HAS_AVX2_FLAG failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1140770824/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1140770824.dir/build.make CMakeFiles/cmTryCompileExec1140770824.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1140770824.dir/src.cxx.o
+/usr/bin/c++    -std=c++11 -pthread -DCOMPILER_HAS_AVX2_FLAG   -mavx2 -o CMakeFiles/cmTryCompileExec1140770824.dir/src.cxx.o -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command line option '-mavx2'
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make[1]: *** [CMakeFiles/cmTryCompileExec1140770824.dir/src.cxx.o] Error 1
+make: *** [cmTryCompileExec1140770824/fast] Error 2
+
+Source file was:
+int main() { return 0; }
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2926415155/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2926415155.dir/build.make CMakeFiles/cmTryCompileExec2926415155.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2926415155.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2926415155.dir/CheckSymbolExists.c.o   -c /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec2926415155
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2926415155.dir/link.txt --verbose=1
+/usr/bin/cc        CMakeFiles/cmTryCompileExec2926415155.dir/CheckSymbolExists.c.o  -o cmTryCompileExec2926415155 -rdynamic 
+CMakeFiles/cmTryCompileExec2926415155.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0xe): undefined reference to `pthread_create'
+CheckSymbolExists.c:(.text+0x12): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec2926415155] Error 1
+make: *** [cmTryCompileExec2926415155/fast] Error 2
+
+File /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1644896975/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1644896975.dir/build.make CMakeFiles/cmTryCompileExec1644896975.dir/build
+make[1]: Entering directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1644896975.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1644896975.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.2/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1644896975
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1644896975.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create     CMakeFiles/cmTryCompileExec1644896975.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1644896975 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: Leaving directory `/home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec1644896975] Error 1
+make: *** [cmTryCompileExec1644896975/fast] Error 2
+
+

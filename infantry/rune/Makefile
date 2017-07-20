@@ -114,6 +114,30 @@ function_test/fast:
 	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/build
 .PHONY : function_test/fast
 
+getImgs.o: getImgs.cpp.o
+.PHONY : getImgs.o
+
+# target to build an object file
+getImgs.cpp.o:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/getImgs.cpp.o
+.PHONY : getImgs.cpp.o
+
+getImgs.i: getImgs.cpp.i
+.PHONY : getImgs.i
+
+# target to preprocess a source file
+getImgs.cpp.i:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/getImgs.cpp.i
+.PHONY : getImgs.cpp.i
+
+getImgs.s: getImgs.cpp.s
+.PHONY : getImgs.s
+
+# target to generate assembly for a file
+getImgs.cpp.s:
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/getImgs.cpp.s
+.PHONY : getImgs.cpp.s
+
 getLabel.o: getLabel.cpp.o
 .PHONY : getLabel.o
 
@@ -147,6 +171,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... function_test"
+	@echo "... getImgs.o"
+	@echo "... getImgs.i"
+	@echo "... getImgs.s"
 	@echo "... getLabel.o"
 	@echo "... getLabel.i"
 	@echo "... getLabel.s"

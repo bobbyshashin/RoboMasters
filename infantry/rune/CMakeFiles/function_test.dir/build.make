@@ -72,14 +72,39 @@ CMakeFiles/function_test.dir/getLabel.cpp.o.provides: CMakeFiles/function_test.d
 
 CMakeFiles/function_test.dir/getLabel.cpp.o.provides.build: CMakeFiles/function_test.dir/getLabel.cpp.o
 
+CMakeFiles/function_test.dir/getImgs.cpp.o: CMakeFiles/function_test.dir/flags.make
+CMakeFiles/function_test.dir/getImgs.cpp.o: getImgs.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/ubuntu/Documents/RoboMasters/infantry/rune/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/function_test.dir/getImgs.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/function_test.dir/getImgs.cpp.o -c /home/ubuntu/Documents/RoboMasters/infantry/rune/getImgs.cpp
+
+CMakeFiles/function_test.dir/getImgs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/function_test.dir/getImgs.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/ubuntu/Documents/RoboMasters/infantry/rune/getImgs.cpp > CMakeFiles/function_test.dir/getImgs.cpp.i
+
+CMakeFiles/function_test.dir/getImgs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/function_test.dir/getImgs.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/ubuntu/Documents/RoboMasters/infantry/rune/getImgs.cpp -o CMakeFiles/function_test.dir/getImgs.cpp.s
+
+CMakeFiles/function_test.dir/getImgs.cpp.o.requires:
+.PHONY : CMakeFiles/function_test.dir/getImgs.cpp.o.requires
+
+CMakeFiles/function_test.dir/getImgs.cpp.o.provides: CMakeFiles/function_test.dir/getImgs.cpp.o.requires
+	$(MAKE) -f CMakeFiles/function_test.dir/build.make CMakeFiles/function_test.dir/getImgs.cpp.o.provides.build
+.PHONY : CMakeFiles/function_test.dir/getImgs.cpp.o.provides
+
+CMakeFiles/function_test.dir/getImgs.cpp.o.provides.build: CMakeFiles/function_test.dir/getImgs.cpp.o
+
 # Object files for target function_test
 function_test_OBJECTS = \
-"CMakeFiles/function_test.dir/getLabel.cpp.o"
+"CMakeFiles/function_test.dir/getLabel.cpp.o" \
+"CMakeFiles/function_test.dir/getImgs.cpp.o"
 
 # External object files for target function_test
 function_test_EXTERNAL_OBJECTS =
 
 function_test: CMakeFiles/function_test.dir/getLabel.cpp.o
+function_test: CMakeFiles/function_test.dir/getImgs.cpp.o
 function_test: CMakeFiles/function_test.dir/build.make
 function_test: /usr/lib/libopencv_vstab.so.2.4.10
 function_test: /usr/lib/libopencv_imuvstab.so.2.4.10
@@ -112,6 +137,7 @@ CMakeFiles/function_test.dir/build: function_test
 .PHONY : CMakeFiles/function_test.dir/build
 
 CMakeFiles/function_test.dir/requires: CMakeFiles/function_test.dir/getLabel.cpp.o.requires
+CMakeFiles/function_test.dir/requires: CMakeFiles/function_test.dir/getImgs.cpp.o.requires
 .PHONY : CMakeFiles/function_test.dir/requires
 
 CMakeFiles/function_test.dir/clean:
